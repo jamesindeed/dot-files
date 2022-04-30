@@ -1,0 +1,126 @@
+# ~/.config/starship.toml
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+# Change command timeout from 500 to 1000 ms
+command_timeout = 1000
+
+# Change the default prompt format
+format = """\
+[╭╴](bold white)$env_var\
+$all[╰─](bold white)$character"""
+# 
+# Change the default prompt characters
+
+# For Jet Brains Font
+# [character]
+# success_symbol = "[](bold white)"
+# error_symbol = "[](bold white)"
+
+# For Hack Font
+[character]
+success_symbol = "[➜](bold white)"
+error_symbol = "[➜](bold white)"
+
+# Shows the username
+[username]
+style_user = "white bold"
+style_root = "black bold"
+format = "者[$user]($style) "
+disabled = false
+show_always = true
+
+[directory]
+truncation_length = 3
+truncation_symbol = "…/"
+home_symbol = " ~"
+read_only_style = "197"
+read_only = "  "
+format = "[$path]($style)[$read_only]($read_only_style) "
+
+[git_branch]
+format = "on [$symbol $branch ]($style)"
+symbol = " "
+style = "bold purple"
+
+[git_commit]
+format = "[\\($hash\\)]($style) [\\($tag\\)]($style)"
+style = "bold green"
+
+[git_status]
+conflicted = " ️"
+ahead = "🏎️💨×${count} "
+behind = "🐢×${count} "
+diverged = "🔱🏎️💨×${ahead_count} 🐢×${behind_count} "
+untracked = "🛤️×${count} "
+stashed = "📦 "
+modified = "📝×${count} "
+staged = "🗃️×${count} "
+renamed = "📛×${count} "
+deleted = "🗑️×${count} "
+style = "bold red"
+format ='([\[$all_status$ahead_behind\]]($style))'
+
+[git_state]
+rebase = "REBASING"
+merge =	"MERGING"
+revert = "REVERTING"
+cherry_pick = "CHERRY-PICKING"
+bisect = "BISECTING"
+am = "AM"
+am_or_rebase = "AM/REBASE"
+style =	"bold red"
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+disabled = false
+
+[hg_branch]
+symbol = " "
+style =	"bold purple"
+format = "on [$symbol$branch]($style) "
+
+[memory_usage]
+format = "via $symbol [${ram}( | ${ram_pct})]($style)"
+symbol = " "
+style = "bold dimmed green"
+
+[battery]
+full_symbol = ""
+charging_symbol = ""
+discharging_symbol = ""
+
+[terraform]
+format = "via [ terraform $version]($style) 壟 [$workspace]($style) "
+
+[vagrant]
+format = "via [ vagrant $version]($style) "
+
+[docker_context]
+format = "via [ $context](bold blue) "
+
+[helm]
+format = "via [ $version](bold purple) "
+
+[python]
+symbol = " "
+python_binary = "python3"
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\))]($style)'
+
+[nodejs]
+format = "via [ $version](bold green) "
+disabled = true
+
+[ruby]
+format = "via [ $version]($style) "
+
+[kubernetes]
+format = 'on [ $context\($namespace\)](bold purple) '
+disabled = false
+[kubernetes.context_aliases]
+"clcreative-k8s-staging" = "cl-k8s-staging"
+"clcreative-k8s-production" = "cl-k8s-prod"
+
+[aws]
+format = '\[AWS: [$profile/($region)]($style)\]'
+symbol = ''
+style = 'bold white'
